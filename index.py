@@ -2,6 +2,8 @@
 
 import os
 import time
+
+print(os.environ)
 from skafossdk import * #DataEngine, DataSourceType
 
 skafos = Skafos() #project_token = "83ec411086f4eb7cd168c6eb5f231299")
@@ -129,10 +131,10 @@ t = Test()
 # print(dataresult.result())
 
 # result2 = None
-res = skafos.engine.create_view("my_table", {"table": "my_table"}, DataSourceType.Cassandra)
+res = skafos.engine.create_view("my_table", {"keyspace": "weather", "table": "weather_forecast"}, DataSourceType.Cassandra)
 print("CREATED VIEW")
 print(res)
-results = skafos.engine.query("SELECT * from my_table").result()
+results = skafos.engine.query("SELECT * from my_table LIMIT 5").result()
 print("SELECTING FROM TABLE")
 print(results)
 # query_string = "select * from target_creators"
