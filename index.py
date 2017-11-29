@@ -133,7 +133,7 @@ t = Test()
 # result2 = None
 res = skafos.engine.create_view("my_table", {"keyspace": "weather", "table": "weather_forecast"}, DataSourceType.Cassandra)
 print("CREATED VIEW")
-print(res)
+print(res.result())
 results = skafos.engine.query("SELECT * from my_table LIMIT 5").result()
 print("SELECTING FROM TABLE")
 print(results)
