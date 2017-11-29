@@ -1,1 +1,1 @@
-skafossdk==0.0.3
+skafossdk==0.0.4
