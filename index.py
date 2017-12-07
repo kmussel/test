@@ -6,35 +6,39 @@ import time
 print(os.environ)
 from skafossdk import * #DataEngine, DataSourceType
 
+print(DataSourceType.Cassandra)
+
 skafos = Skafos() #project_token = "83ec411086f4eb7cd168c6eb5f231299")
 results = None
 
-schema =  {
-			"table_name": "my_table",
-		    "options": {
-				"primary_key": [
-					"column1", 
-					"column3"
-				],
-				"order_by": [
-					"column3 desc"
-				]
-			},
-			"columns" : [
-				{
-					"column1": "varint"
-				},
-				{
-					"column2": "varchar"
-				},
-				{
-					"column3": "varchar"
-				},
-				{
-					"column4": "varchar"
-				}
-			]
-		}
+
+
+# schema =  {
+# 			"table_name": "my_table",
+# 		    "options": {
+# 				"primary_key": [
+# 					"column1", 
+# 					"column3"
+# 				],
+# 				"order_by": [
+# 					"column3 desc"
+# 				]
+# 			},
+# 			"columns" : [
+# 				{
+# 					"column1": "varint"
+# 				},
+# 				{
+# 					"column2": "varchar"
+# 				},
+# 				{
+# 					"column3": "varchar"
+# 				},
+# 				{
+# 					"column4": "varchar"
+# 				}
+# 			]
+# 		}
 
 # {
 # 	"request_id": "9aceb461-6310-49cd-8dee-3fda78693a0e",
@@ -74,24 +78,8 @@ schema =  {
 # 		]
 # 	}
 # }
-data = [[1, "113", "123", "133"], [2, "213", "223", "233"]]
+# data = [[1, "113", "123", "133"], [2, "213", "223", "233"]]
 
-
-
-class Test:
-    def __init__(self):
-        self.outerresponse = [""]
-
-    def handle_response(self, response):
-        print("{}".format(response))
-        print("INSIDE ASYNC RESPONSE")
-        print(threading.current_thread())
-        self.outerresponse[0] = response
-        print(response.result())
-        print("AFTER SETTIG RESPONSE")
-
-
-t = Test()
 
 
 # def hello():
@@ -125,10 +113,7 @@ t = Test()
 # print(res.result())
 
 
-# dataresult = skafos.engine.save(schema, data)
-# print("GETTING DATA RESULT")
-# print(dataresult)
-# print(dataresult.result())
+
 
 # result2 = None
 res = skafos.engine.create_view("my_table", {"keyspace": "weather", "table": "weather_forecast"}, DataSourceType.Cassandra)
@@ -137,6 +122,28 @@ print(res.result())
 results = skafos.engine.query("SELECT * from my_table LIMIT 5").result()
 print("SELECTING FROM TABLE")
 print(results)
+
+
+# schema =  {
+# 			"table_name": "my_weather_table",
+# 		    "options": {
+# 				"primary_key": [
+# 					"column1", 
+# 					"column3"
+# 				],
+# 				"order_by": [
+# 					"column3 desc"
+# 				]
+# 			},
+#             'columns': results['columns']
+
+# 'columns': [{'date': 'date'}, {'date_fetched': 'timestamp'}, {'zipcode': 'string'}, {'source': 'string'}, {'cloud_cover': 'float'}, {'heat_index': 'float'}, {'humidity': 'float'}, {'latitude': 'float'}, {'longitude': 'float'}, {'precip_prob': 'float'}, {'precip_total': 'float'}, {'pressure': 'float'}, {'sunrise': 'timestamp'}, {'sunset': 'timestamp'}, {'tmax': 'float'}, {'tmin': 'float'}, {'wind_speed': 'float'}]}
+# data = results['data']
+# dataresult = skafos.engine.save(schema, data)
+# print("GETTING DATA RESULT")
+# print(dataresult)
+# print(dataresult.result())
+
 # query_string = "select * from target_creators"
 # res1 = de.query(query_string, callback=t.handle_response)
 # # res1 = de.query(query_string, lambda x: (
@@ -157,5 +164,5 @@ print(results)
 # print(res1.result())
 
 # print(t.outerresponse)
-# time.sleep(6)
+time.sleep(6)
 print("PROGRAM TERMINATED")

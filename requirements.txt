@@ -1,1 +1,1 @@
-skafossdk==0.0.4
+-e git+ssh://git@github.com/MetisMachine/sdk.git@py3.5#egg=skafossdk==0.0.4
