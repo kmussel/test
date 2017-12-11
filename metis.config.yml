@@ -1,5 +1,5 @@
-project_token: 351558fb542d16405254af24
-name: kmussel test
+project_token: 6dfb0522c4ef4649e757e1d1
+name: myproj
 language: python
 environment:
   - key: value
