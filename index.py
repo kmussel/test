@@ -5,7 +5,7 @@ import os
 
 from skafossdk import *
 
-
+print("first")k
 print("TADA BEFORE INIT")
 
 skafos = Skafos()
