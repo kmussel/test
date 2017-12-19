@@ -2,7 +2,7 @@
 
 import os
 
-print("Hello, world!")
+print("Begin Hello, world!")
 
 
 from skafossdk import *
