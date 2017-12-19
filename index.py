@@ -5,6 +5,9 @@ import os
 
 from skafossdk import *
 
+
+print("BEFORE INIT")
+
 skafos = Skafos()
 
 print("12312 Begin Hello, world!")
