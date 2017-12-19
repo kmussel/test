@@ -2,13 +2,12 @@
 
 import os
 
-print("12312 Begin Hello, world!")
-
 
 from skafossdk import *
 
 skafos = Skafos()
 
+print("12312 Begin Hello, world!")
 
 res = skafos.engine.create_view("my_table", {"keyspace": "weather", "table": "weather_forecast"}, DataSourceType.Cassandra)
 print("CREATED VIEW")
