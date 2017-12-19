@@ -4,7 +4,7 @@ import os
 
 
 from skafossdk import *
-
+print("after import")
 
 skafos = Skafos()
 
